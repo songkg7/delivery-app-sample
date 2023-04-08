@@ -12,6 +12,6 @@ plugins {
 }
 
 dependencies {
-    implementation(project(":domain"))
+    api(project(":infrastructure"))
     implementation("org.springframework.boot:spring-boot-starter-web")
 }
