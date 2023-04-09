@@ -1,7 +1,6 @@
 package com.haril.domain.customer.entity
 
-class Customer(
-    val id: Long,
+data class Customer(
     val name: String,
     val address: String,
     val phoneNumber: String,

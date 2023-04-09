@@ -12,20 +12,6 @@ class CustomerPersistenceAdapter(
 ) : CustomerRepository {
 
     override fun save(customer: Customer): Customer {
-        return customerJpaRepository.save(
-            CustomerJpaEntity(
-                id = customer.id,
-                name = customer.name,
-                address = customer.address,
-                phoneNumber = customer.phoneNumber,
-            )
-        ).let {
-            Customer(
-                id = it.id,
-                name = it.name,
-                address = it.address,
-                phoneNumber = it.phoneNumber,
-            )
-        }
+        return customerJpaRepository.save(CustomerJpaEntity.from(customer)).toEntity()
     }
 }
