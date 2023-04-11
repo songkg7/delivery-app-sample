@@ -13,7 +13,6 @@ class SignUpService(
 
     override fun signUp(command: SighUpCommand) {
         Customer(
-            id = 0, // FIXME
             name = command.name,
             address = command.address,
             phoneNumber = command.phoneNumber,
