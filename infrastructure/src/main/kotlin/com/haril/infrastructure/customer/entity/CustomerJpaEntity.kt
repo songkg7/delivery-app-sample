@@ -25,6 +25,7 @@ class CustomerJpaEntity(
 
     fun toEntity(): Customer {
         return Customer(
+            id = id,
             name = name,
             address = address,
             phoneNumber = phoneNumber,

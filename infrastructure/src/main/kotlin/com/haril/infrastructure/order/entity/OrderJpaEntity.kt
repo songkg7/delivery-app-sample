@@ -8,7 +8,7 @@ import java.time.LocalDateTime
 class OrderJpaEntity(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long,
+    val id: Long? = null,
     val customerId: Long,
     val orderDate: LocalDateTime,
 ) {

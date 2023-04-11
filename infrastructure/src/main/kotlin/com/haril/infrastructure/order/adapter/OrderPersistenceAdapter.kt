@@ -14,13 +14,11 @@ class OrderPersistenceAdapter(
     override fun save(order: Order): Order {
         return orderJpaRepository.save(
             OrderJpaEntity(
-                id = order.id,
                 customerId = order.customerId,
                 orderDate = order.orderDate,
             )
         ).let {
             Order(
-                id = it.id,
                 customerId = it.customerId,
                 orderDate = it.orderDate,
             )

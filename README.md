@@ -17,7 +17,6 @@ JPA 학습 및 Kotlin 에 익숙해지기 위한 샘플 애플리케이션
 title: delivery table
 ---
 erDiagram
-    CUSTOMER }|..|{ DELIVERY-ADDRESS: uses
     CUSTOMER ||--o{ ORDER: do
     CUSTOMER {
         Long id PK

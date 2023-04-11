@@ -1,12 +1,10 @@
 package com.haril.infrastructure.menu.entity
 
 import com.haril.domain.menu.entity.Menu
-import jakarta.persistence.Entity
-import jakarta.persistence.GeneratedValue
-import jakarta.persistence.GenerationType
-import jakarta.persistence.Id
+import jakarta.persistence.*
 
 @Entity
+@Table(name = "menu")
 class MenuJpaEntity(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

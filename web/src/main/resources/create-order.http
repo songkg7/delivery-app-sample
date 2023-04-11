@@ -1,0 +1,13 @@
+# Order
+POST http://localhost:8080/order
+Content-Type: application/json
+
+{
+  "customerId": "1",
+  "menus": [
+    {
+      "menuId": "1",
+      "quantity": 1
+    }
+  ]
+}

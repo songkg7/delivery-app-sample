@@ -4,4 +4,5 @@ import com.haril.domain.customer.entity.Customer
 
 interface CustomerRepository {
     fun save(customer: Customer): Customer
+    fun findById(id: Long): Customer?
 }
