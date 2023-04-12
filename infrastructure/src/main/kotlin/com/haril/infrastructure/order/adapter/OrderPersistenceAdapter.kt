@@ -20,6 +20,7 @@ class OrderPersistenceAdapter(
             )
         ).let {
             Order(
+                id = it.id,
                 customerId = it.customerId,
                 orderDate = it.orderDate,
             )

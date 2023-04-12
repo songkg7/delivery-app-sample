@@ -9,4 +9,6 @@ class CreateOrderCommand(
     val customer: Customer,
     val menus: List<Pair<Menu, Int>>,
 ) {
+    // TODO: customer id validation
+
 }

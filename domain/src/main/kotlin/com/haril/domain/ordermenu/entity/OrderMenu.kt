@@ -1,7 +1,7 @@
-package com.haril.domain.orderitem.entity
+package com.haril.domain.ordermenu.entity
 
 class OrderMenu(
-    val id: Long,
+    val id: Long? = null,
     val orderId: Long,
     val menuId: Long,
 ) {
