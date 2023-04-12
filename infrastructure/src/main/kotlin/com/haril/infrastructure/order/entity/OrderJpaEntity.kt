@@ -1,5 +1,6 @@
 package com.haril.infrastructure.order.entity
 
+import com.haril.domain.order.entity.Order
 import jakarta.persistence.*
 import java.time.LocalDateTime
 
@@ -11,5 +12,7 @@ class OrderJpaEntity(
     val id: Long? = null,
     val customerId: Long,
     val orderDate: LocalDateTime,
+    @Enumerated(EnumType.STRING)
+    val deliveryStatus: Order.DeliveryStatus = Order.DeliveryStatus.WAITING,
 ) {
 }
