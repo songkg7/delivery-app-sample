@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component
 
 @Component
 class OrderPersistenceAdapter(
+    // TODO: implement outgoing port and incoming port
     private val orderJpaRepository: OrderJpaRepository
 ) : OrderRepository {
 

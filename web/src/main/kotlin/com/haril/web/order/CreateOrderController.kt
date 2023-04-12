@@ -1,5 +1,6 @@
 package com.haril.web.order
 
+import com.haril.application.customer.command.FindCustomerCommand
 import com.haril.application.customer.usecase.FindCustomerUsecase
 import com.haril.application.menu.usecase.FindMenuUsecase
 import com.haril.application.order.command.CreateOrderCommand
@@ -10,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-class OrderController(
+class CreateOrderController(
     private val createOrderUsecase: CreateOrderUsecase,
     private val findCustomerUsecase: FindCustomerUsecase,
     private val findMenuUsecase: FindMenuUsecase,
@@ -18,7 +19,7 @@ class OrderController(
 
     @PostMapping("/order")
     fun createOrder(@RequestBody request: CreateOrderRequest): String {
-        val customer = findCustomerUsecase.findCustomer(request.customerId)
+        val customer = findCustomerUsecase.findCustomer(FindCustomerCommand(request.customerId))
         val menus = request.menus.map { findMenuUsecase.find(it.menuId) to it.quantity }
         createOrderUsecase.create(CreateOrderCommand(customer, menus))
         // TODO: response model

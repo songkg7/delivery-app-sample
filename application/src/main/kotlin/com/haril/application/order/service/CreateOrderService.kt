@@ -5,8 +5,10 @@ import com.haril.application.order.usecase.CreateOrderUsecase
 import com.haril.domain.order.entity.Order
 import com.haril.domain.order.repository.OrderRepository
 import org.springframework.stereotype.Service
+import org.springframework.transaction.annotation.Transactional
 
 @Service
+@Transactional
 class CreateOrderService(
     private val orderRepository: OrderRepository,
 //    private val orderMenuRepository: OrderMenuRepository,
