@@ -92,3 +92,7 @@ erDiagram
 #### Menu
 
 - 식당을 등록한 Owner 만 Menu 를 등록할 수 있다.
+
+#### Rider
+
+- 주문의 상태를 변경할 수 있다.

@@ -4,5 +4,5 @@ import com.haril.application.customer.command.FindCustomerCommand
 import com.haril.domain.customer.entity.Customer
 
 interface FindCustomerUsecase {
-    fun findCustomer(findCustomerCommand: FindCustomerCommand): Customer
+    fun findCustomer(command: FindCustomerCommand): Customer
 }
