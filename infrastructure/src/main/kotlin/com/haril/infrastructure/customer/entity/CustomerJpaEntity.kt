@@ -8,7 +8,7 @@ import jakarta.persistence.*
 class CustomerJpaEntity(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long = 0L,
+    val id: Long? = null,
     val name: String,
     val address: String,
     val phoneNumber: String,
