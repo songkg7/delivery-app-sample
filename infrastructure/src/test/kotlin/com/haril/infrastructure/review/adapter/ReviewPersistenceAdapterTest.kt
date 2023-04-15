@@ -13,7 +13,7 @@ import com.haril.infrastructure.restaurant.repository.RestaurantJpaRepository
 import com.haril.infrastructure.review.repsitory.ReviewJpaRepository
 import io.kotest.core.spec.style.BehaviorSpec
 import io.kotest.extensions.spring.SpringExtension
-import io.kotest.matchers.collections.shouldHaveSize
+import io.kotest.matchers.collections.shouldContainExactly
 import io.kotest.matchers.shouldBe
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest
@@ -56,7 +56,8 @@ class ReviewPersistenceAdapterTest @Autowired constructor(
                         persistenceAdapter.save(it)
                     }
                     Then("리뷰가 등록된다.") {
-                        reviewJpaRepository.findAll() shouldHaveSize 1
+                        val reviews = reviewJpaRepository.findAll().map { it.toEntity() }
+                        reviews shouldContainExactly listOf(review)
                     }
                 }
             }
