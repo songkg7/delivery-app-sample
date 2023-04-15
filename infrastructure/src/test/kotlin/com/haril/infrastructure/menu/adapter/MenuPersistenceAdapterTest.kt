@@ -16,25 +16,21 @@ import org.springframework.test.context.ActiveProfiles
 @ActiveProfiles("test")
 @DataJpaTest
 @Import(MenuPersistenceAdapter::class)
-class MenuPersistenceAdapterTest : BehaviorSpec() {
+class MenuPersistenceAdapterTest @Autowired constructor(
+    private val persistenceAdapter: MenuPersistenceAdapter,
+    private val menuJpaRepository: MenuJpaRepository,
+    private val restaurantRepository: RestaurantJpaRepository,
+) : BehaviorSpec() {
     override fun extensions() = listOf(SpringExtension)
-
-    @Autowired
-    lateinit var menuJpaRepository: MenuJpaRepository
-
-    @Autowired
-    lateinit var persistenceAdapter: MenuPersistenceAdapter
-
-    @Autowired
-    lateinit var restaurantRepository: RestaurantJpaRepository
 
     init {
         Given("레스토랑이 존재하는 경우") {
-            val restaurant = Restaurant(name = "마녀주방")
-            val savedRestaurant = restaurantRepository.save(RestaurantJpaEntity.from(restaurant)).toEntity()
+            val restaurant = Restaurant(name = "마녀주방").let {
+                restaurantRepository.save(RestaurantJpaEntity.from(it)).toEntity()
+            }
 
             When("새로운 메뉴에 레스토랑 정보를 전달해주면") {
-                val menu = Menu(name = "test", price = 1000, restaurant = savedRestaurant)
+                val menu = Menu(name = "test", price = 1000, restaurant = restaurant)
                 persistenceAdapter.save(menu)
 
                 Then("메뉴가 등록된다.") {
