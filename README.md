@@ -88,6 +88,8 @@ erDiagram
 
 식당과 메뉴는 이미 등록되어 있다.
 
+- pagination (optional)
+
 ### (Optional) Security
 
 #### Owner
