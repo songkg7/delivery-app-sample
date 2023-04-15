@@ -42,12 +42,14 @@ erDiagram
         Long customer_id FK
         Enum deliveryStatus
     }
-    ORDER ||--o| REVIEW: contains
+    RESTAURANT ||--o{ REVIEW: contains
     REVIEW {
         Long id PK
-        Long order_id FK
-        Long customer_id FK
+        Long order_id
+        Long customer_id
+        Long restaurant_id FK
         String contents
+        Int rating
     }
     RESTAURANT ||--|{ MENU: contains
     RESTAURANT {
