@@ -4,6 +4,18 @@
 
 JPA 학습 및 Kotlin 에 익숙해지기 위한 샘플 애플리케이션
 
+## Environment
+
+- Spring Boot 3.0.5
+- Kotlin 1.7.x
+
+## How to run
+
+```bash
+docker compose up -d
+./gradlew :web:bootRun
+```
+
 ## ERD
 
 - Review
