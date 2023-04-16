@@ -6,6 +6,7 @@ import com.haril.infrastructure.order.entity.OrderJpaEntity
 import jakarta.persistence.*
 
 @Entity
+@Table(name = "orders_menu")
 class OrderMenuJpaEntity(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,7 +25,8 @@ class OrderMenuJpaEntity(
         return OrderMenu(
             id = id,
             orderId = order.id!!,
-            menuId = menu.id,
+            menuId = menu.id!!,
         )
     }
+
 }

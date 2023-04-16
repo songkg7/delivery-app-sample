@@ -9,7 +9,7 @@ import jakarta.persistence.*
 class ReviewJpaEntity(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long = 0L,
+    val id: Long? = null,
 
     @ManyToOne
     val restaurant: RestaurantJpaEntity,

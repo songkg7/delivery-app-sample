@@ -1,0 +1,55 @@
+### Sign Up
+POST http://localhost:8080/customer/sign-up
+Content-Type: application/json
+
+{
+  "name": "John Doe",
+  "address": "123 Main Street",
+  "phoneNumber": "123-456-7890"
+}
+
+### Single Menu Order
+POST http://localhost:8080/order
+Content-Type: application/json
+
+{
+  "customerId": 1,
+  "restaurantId": 1,
+  "menus": [
+    {
+      "menuId": 1,
+      "quantity": 1
+    }
+  ]
+}
+
+### Multi Menu Order
+POST http://localhost:8080/order
+Content-Type: application/json
+
+{
+  "customerId": 1,
+  "restaurantId": 2,
+  "menus": [
+    {
+      "menuId": 1,
+      "quantity": 1
+    },
+    {
+      "menuId": 2,
+      "quantity": 2
+    }
+  ]
+}
+
+### Create Review
+POST http://localhost:8080/review
+Content-Type: application/json
+
+{
+  "customerId": 1,
+  "restaurantId": 1,
+  "orderId": 1,
+  "rating": 5,
+  "content": "This is a content"
+}

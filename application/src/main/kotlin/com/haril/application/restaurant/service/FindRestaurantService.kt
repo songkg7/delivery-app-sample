@@ -11,6 +11,6 @@ class FindRestaurantService(
 ) : FindRestaurantUsecase {
 
     override fun find(command: FindRestaurantCommand) =
-        restaurantRepository.findById(command.restaurantId) ?: throw IllegalArgumentException("Restaurant not found")
+        restaurantRepository.findById(command.restaurantId)
 
 }

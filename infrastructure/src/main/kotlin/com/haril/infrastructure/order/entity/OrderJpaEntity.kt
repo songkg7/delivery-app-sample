@@ -10,6 +10,7 @@ class OrderJpaEntity(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long? = null,
+    // TODO: ManyToOne
     val customerId: Long,
     val restaurantId: Long,
     val orderDate: LocalDateTime,
@@ -39,4 +40,16 @@ class OrderJpaEntity(
         )
     }
 
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (javaClass != other?.javaClass) return false
+
+        other as OrderJpaEntity
+
+        return id == other.id
+    }
+
+    override fun hashCode(): Int {
+        return id.hashCode()
+    }
 }

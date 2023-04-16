@@ -16,7 +16,7 @@ class RestaurantPersistenceAdapter(
 
     // FIXME: CQRS
     // 결국 port 를 분리해야 할까..
-    override fun findById(id: Long): Restaurant? {
-        return repository.findById(id).map { it.toEntity() }.orElse(null)
+    override fun findById(id: Long): Restaurant {
+        return repository.findById(id).map { it.toEntity() }.orElseThrow()
     }
 }

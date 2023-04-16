@@ -15,17 +15,15 @@ class OrderPersistenceAdapter(
     override fun save(order: Order): Order {
         return orderJpaRepository.save(
             OrderJpaEntity(
+                id = order.id,
                 customerId = order.customerId,
                 orderDate = order.orderDate,
                 restaurantId = order.restaurantId,
             )
-        ).let {
-            Order(
-                id = it.id,
-                customerId = it.customerId,
-                orderDate = it.orderDate,
-                restaurantId = it.restaurantId,
-            )
-        }
+        ).toEntity()
+    }
+
+    override fun findById(id: Long): Order {
+        return orderJpaRepository.findById(id).orElseThrow().toEntity()
     }
 }

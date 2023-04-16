@@ -3,7 +3,7 @@ package com.haril.domain.review.entity
 import com.haril.domain.restaurant.entity.Restaurant
 
 class Review(
-    val id: Long = 0L,
+    val id: Long? = null,
     val restaurant: Restaurant,
     val customerId: Long,
     val orderId: Long,

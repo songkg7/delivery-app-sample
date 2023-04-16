@@ -9,7 +9,7 @@ import jakarta.persistence.*
 class MenuJpaEntity(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long = 0,
+    val id: Long? = null,
     val name: String,
     val price: Int,
     @ManyToOne(fetch = FetchType.LAZY)
@@ -27,6 +27,7 @@ class MenuJpaEntity(
     companion object {
         fun from(menu: Menu): MenuJpaEntity {
             return MenuJpaEntity(
+                id = menu.id,
                 name = menu.name,
                 price = menu.price,
                 restaurant = RestaurantJpaEntity.from(menu.restaurant),

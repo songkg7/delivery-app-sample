@@ -1,9 +1,0 @@
-### Sign up
-POST http://localhost:8080/customer/sign-up
-Content-Type: application/json
-
-{
-  "name": "John Doe",
-  "address": "123 Main Street",
-  "phoneNumber": "123-456-7890"
-}

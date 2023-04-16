@@ -15,7 +15,7 @@ class CustomerPersistenceAdapter(
         return customerJpaRepository.save(CustomerJpaEntity.from(customer)).toEntity()
     }
 
-    override fun findById(id: Long): Customer? {
-        return customerJpaRepository.findById(id).map { it.toEntity() }.orElse(null)
+    override fun findById(id: Long): Customer {
+        return customerJpaRepository.findById(id).map { it.toEntity() }.orElseThrow()
     }
 }
