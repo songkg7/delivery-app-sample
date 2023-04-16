@@ -17,12 +17,14 @@ class OrderPersistenceAdapter(
             OrderJpaEntity(
                 customerId = order.customerId,
                 orderDate = order.orderDate,
+                restaurantId = order.restaurantId,
             )
         ).let {
             Order(
                 id = it.id,
                 customerId = it.customerId,
                 orderDate = it.orderDate,
+                restaurantId = it.restaurantId,
             )
         }
     }

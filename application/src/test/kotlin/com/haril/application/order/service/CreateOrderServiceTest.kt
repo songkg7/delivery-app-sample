@@ -23,7 +23,8 @@ class CreateOrderServiceTest : BehaviorSpec({
             menus = listOf(
                 Menu(1, "피자", 10000, restaurant) to 1,
                 Menu(2, "햄버거", 5000, restaurant) to 2,
-            )
+            ),
+            restaurant = restaurant,
         )
 
         When("createOrderService 를 실행하면") {

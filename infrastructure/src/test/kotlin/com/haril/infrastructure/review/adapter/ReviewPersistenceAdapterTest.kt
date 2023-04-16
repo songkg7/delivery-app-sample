@@ -42,7 +42,7 @@ class ReviewPersistenceAdapterTest @Autowired constructor(
                 restaurantJpaRepository.save(RestaurantJpaEntity.from(it)).toEntity()
             }
             And("주문이 존재하는 경우") {
-                val order = Order(customerId = customer.id!!).let {
+                val order = Order(customerId = customer.id!!, restaurantId = restaurant.id!!).let {
                     orderJpaRepository.save(OrderJpaEntity.from(it)).toEntity()
                 }
                 When("리뷰를 작성하면") {

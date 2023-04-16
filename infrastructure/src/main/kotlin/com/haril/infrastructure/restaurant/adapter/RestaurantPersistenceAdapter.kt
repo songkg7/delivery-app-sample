@@ -9,8 +9,14 @@ import org.springframework.stereotype.Component
 @Component
 class RestaurantPersistenceAdapter(
     private val repository: RestaurantJpaRepository
-): RestaurantRepository {
+) : RestaurantRepository {
     override fun save(restaurant: Restaurant): Restaurant {
         return repository.save(RestaurantJpaEntity.from(restaurant)).toEntity()
+    }
+
+    // FIXME: CQRS
+    // 결국 port 를 분리해야 할까..
+    override fun findById(id: Long): Restaurant? {
+        return repository.findById(id).map { it.toEntity() }.orElse(null)
     }
 }

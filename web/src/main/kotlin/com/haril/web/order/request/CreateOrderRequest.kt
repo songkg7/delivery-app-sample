@@ -1,6 +1,7 @@
 package com.haril.web.order.request
 
 data class CreateOrderRequest(
+    val restaurantId: Long,
     val customerId: Long,
     val menus: List<OrderSheet>,
 )

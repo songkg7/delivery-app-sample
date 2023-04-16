@@ -11,6 +11,7 @@ class OrderJpaEntity(
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long? = null,
     val customerId: Long,
+    val restaurantId: Long,
     val orderDate: LocalDateTime,
     @Enumerated(EnumType.STRING)
     val deliveryStatus: Order.DeliveryStatus = Order.DeliveryStatus.WAITING,
@@ -23,6 +24,7 @@ class OrderJpaEntity(
                 customerId = order.customerId,
                 orderDate = order.orderDate,
                 deliveryStatus = order.deliveryStatus,
+                restaurantId = order.restaurantId,
             )
         }
     }
@@ -33,6 +35,7 @@ class OrderJpaEntity(
             customerId = customerId,
             orderDate = orderDate,
             deliveryStatus = deliveryStatus,
+            restaurantId = restaurantId,
         )
     }
 

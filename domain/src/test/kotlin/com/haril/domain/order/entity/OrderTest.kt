@@ -10,6 +10,7 @@ class OrderTest : BehaviorSpec({
             val order = Order(
                 id = 1,
                 customerId = 1,
+                restaurantId = 1,
             )
             order.deliveryStatus shouldBe Order.DeliveryStatus.WAITING
         }

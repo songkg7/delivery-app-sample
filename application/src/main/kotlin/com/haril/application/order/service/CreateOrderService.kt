@@ -17,6 +17,7 @@ class CreateOrderService(
     override fun create(command: CreateOrderCommand) {
         val order = Order(
             customerId = command.customer.id!!,
+            restaurantId = command.restaurant.id!!,
         ).let { orderRepository.save(it) }
 
         command.menus.forEach { (menu, count) ->
