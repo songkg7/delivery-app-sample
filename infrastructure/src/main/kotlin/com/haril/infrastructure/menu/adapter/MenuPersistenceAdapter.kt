@@ -14,8 +14,7 @@ class MenuPersistenceAdapter(
         return menuJpaRepository.save(MenuJpaEntity.from(menu)).toEntity()
     }
 
-    // NOTE: optional 로 반환해야 할까?
-    override fun findById(id: Long): Menu? {
-        return menuJpaRepository.findById(id).map { it.toEntity() }.orElse(null)
+    override fun findById(id: Long): Menu {
+        return menuJpaRepository.findById(id).map { it.toEntity() }.orElseThrow()
     }
 }

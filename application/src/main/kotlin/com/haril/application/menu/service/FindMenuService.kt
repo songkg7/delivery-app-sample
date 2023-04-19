@@ -12,6 +12,6 @@ class FindMenuService(
     private val menuRepository: MenuRepository,
 ) : FindMenuUsecase {
     override fun find(menuId: Long): Menu {
-        return menuRepository.findById(menuId) ?: throw Exception("존재하지 않는 menu 입니다.")
+        return menuRepository.findById(menuId)
     }
 }
