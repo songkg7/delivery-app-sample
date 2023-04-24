@@ -1,6 +1,7 @@
 package com.haril.infrastructure.menu.entity
 
 import com.haril.domain.menu.entity.Menu
+import com.haril.domain.restaurant.entity.Restaurant
 import com.haril.infrastructure.restaurant.entity.RestaurantJpaEntity
 import jakarta.persistence.*
 
@@ -13,14 +14,15 @@ class MenuJpaEntity(
     val name: String,
     val price: Int,
     @ManyToOne(fetch = FetchType.LAZY)
-    val restaurant: RestaurantJpaEntity,
+    val restaurant: RestaurantJpaEntity? = null,
 ) {
-    fun toEntity(): Menu {
+
+    fun toEntity(restaurant: Restaurant): Menu {
         return Menu(
-            id = id,
+            id = this.id,
             name = name,
             price = price,
-            restaurant = restaurant.toEntity(),
+            restaurant = restaurant,
         )
     }
 
@@ -30,7 +32,6 @@ class MenuJpaEntity(
                 id = menu.id,
                 name = menu.name,
                 price = menu.price,
-                restaurant = RestaurantJpaEntity.from(menu.restaurant),
             )
         }
     }
