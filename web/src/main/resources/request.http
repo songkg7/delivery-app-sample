@@ -8,6 +8,27 @@ Content-Type: application/json
   "phoneNumber": "123-456-7890"
 }
 
+### Create Restaurant
+POST http://localhost:8080/restaurant
+Content-Type: application/json
+
+{
+  "name": "Restaurant 1",
+  "address": "123 Main Street",
+  "phoneNumber": "123-456-7890",
+  "businessHours": "9:00 AM - 9:00 PM",
+  "menus": [
+    {
+      "name": "Menu 1",
+      "price": 1000
+    },
+    {
+      "name": "Menu 2",
+      "price": 2000
+    }
+  ]
+}
+
 ### Single Menu Order
 POST http://localhost:8080/order
 Content-Type: application/json

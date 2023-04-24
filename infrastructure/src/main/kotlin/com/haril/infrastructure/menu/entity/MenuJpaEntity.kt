@@ -32,6 +32,7 @@ class MenuJpaEntity(
                 id = menu.id,
                 name = menu.name,
                 price = menu.price,
+                // FIXME: set restaurant
             )
         }
     }
