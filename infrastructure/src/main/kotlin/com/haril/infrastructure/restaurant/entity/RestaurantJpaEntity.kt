@@ -11,18 +11,32 @@ class RestaurantJpaEntity(
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id : Long? = null,
     val name: String,
-    @OneToMany(mappedBy = "restaurant", cascade = [CascadeType.ALL], orphanRemoval = true)
-    val menus: List<MenuJpaEntity> = emptyList(),
+    menus: List<MenuJpaEntity> = emptyList(),
 ) {
+
+    @OneToMany(mappedBy = "restaurant", cascade = [CascadeType.ALL], orphanRemoval = true)
+    private val _menus: MutableList<MenuJpaEntity> = mutableListOf()
+
+    val menus: List<MenuJpaEntity>
+        get() = _menus.toList()
+
+    init {
+        this._menus.addAll(menus)
+    }
 
     companion object {
         fun from(restaurant: Restaurant): RestaurantJpaEntity {
-            return RestaurantJpaEntity(
+            val restaurantJpaEntity = RestaurantJpaEntity(
                 id = restaurant.id,
                 name = restaurant.name,
-                menus = restaurant.menus.map { MenuJpaEntity.from(it) },
             )
+            restaurantJpaEntity.addMenus(restaurant.menus.map { MenuJpaEntity.from(it, restaurantJpaEntity) })
+            return restaurantJpaEntity
         }
+    }
+
+    private fun addMenus(menus: List<MenuJpaEntity>) {
+        this._menus.addAll(menus)
     }
 
     fun toEntity(): Restaurant {

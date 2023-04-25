@@ -50,7 +50,7 @@ Content-Type: application/json
 
 {
   "customerId": 1,
-  "restaurantId": 2,
+  "restaurantId": 1,
   "menus": [
     {
       "menuId": 1,

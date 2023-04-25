@@ -14,7 +14,7 @@ class MenuJpaEntity(
     val name: String,
     val price: Int,
     @ManyToOne(fetch = FetchType.LAZY)
-    val restaurant: RestaurantJpaEntity? = null,
+    val restaurant: RestaurantJpaEntity,
 ) {
 
     fun toEntity(restaurant: Restaurant): Menu {
@@ -27,12 +27,12 @@ class MenuJpaEntity(
     }
 
     companion object {
-        fun from(menu: Menu): MenuJpaEntity {
+        fun from(menu: Menu, restaurant: RestaurantJpaEntity): MenuJpaEntity {
             return MenuJpaEntity(
                 id = menu.id,
                 name = menu.name,
                 price = menu.price,
-                // FIXME: set restaurant
+                restaurant = restaurant
             )
         }
     }
