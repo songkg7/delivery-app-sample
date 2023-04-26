@@ -6,4 +6,6 @@ interface OrderRepository {
     fun save(order: Order): Order
 
     fun findById(id: Long): Order
+
+    fun findLatestByCustomerId(customerId: Long): Order
 }

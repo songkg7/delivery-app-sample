@@ -17,6 +17,8 @@ class CreateOrderService(
     private val restaurantRepository: RestaurantRepository,
 ) : CreateOrderUsecase {
     override fun create(command: CreateOrderCommand) {
+        val latestOrder = orderRepository.findLatestByCustomerId(command.customerId)
+        check(latestOrder.isCompleted()) { "이전 주문이 완료되지 않았습니다." }
         val order = Order(
             customerId = command.customerId,
             restaurantId = command.restaurantId,

@@ -12,4 +12,13 @@ class Order(
     enum class DeliveryStatus {
         WAITING, DELIVERING, DELIVERED, CANCEL
     }
+
+    fun isCancelable(): Boolean {
+        return deliveryStatus == DeliveryStatus.WAITING
+    }
+
+    fun isCompleted(): Boolean {
+        return deliveryStatus == DeliveryStatus.DELIVERED || deliveryStatus == DeliveryStatus.CANCEL
+    }
+
 }
