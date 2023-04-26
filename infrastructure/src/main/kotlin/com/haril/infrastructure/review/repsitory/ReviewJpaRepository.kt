@@ -7,4 +7,5 @@ import org.springframework.stereotype.Repository
 @Repository
 interface ReviewJpaRepository: JpaRepository<ReviewJpaEntity, Long> {
     fun findByCustomerId(customerId: Long): List<ReviewJpaEntity>
+    fun existsByOrderId(orderId: Long): Boolean
 }

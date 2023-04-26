@@ -25,4 +25,7 @@ class ReviewPersistenceAdapter(
     override fun findAll(): List<Review> = repository.findAll().map { it.toEntity() }
 
     override fun deleteById(id: Long) = repository.deleteById(id)
+    override fun existsByOrderId(orderId: Long): Boolean {
+        return repository.existsByOrderId(orderId)
+    }
 }

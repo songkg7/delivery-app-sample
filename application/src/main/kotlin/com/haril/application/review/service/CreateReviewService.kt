@@ -20,7 +20,7 @@ class CreateReviewService(
 ) : CreateReviewUsecase {
 
     override fun createReview(command: CreateReviewCommand) {
-        // FIXME: order 가 customer 를 간접참조하여 객체 그래프 탐색이 어려운데, 관련 부분 수정
+        check(reviewRepository.existsByOrderId(command.orderId).not()) { "이미 리뷰가 존재합니다." }
         val customer = customerRepository.findById(command.customerId)
         val order = orderRepository.findById(command.orderId)
         val restaurant = restaurantRepository.findById(command.restaurantId)

@@ -8,4 +8,5 @@ interface ReviewRepository {
     fun findByCustomerId(customerId: Long): List<Review>
     fun findAll(): List<Review>
     fun deleteById(id: Long)
+    fun existsByOrderId(orderId: Long): Boolean
 }

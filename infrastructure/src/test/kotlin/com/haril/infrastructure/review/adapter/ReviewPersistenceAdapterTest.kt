@@ -14,7 +14,6 @@ import com.haril.infrastructure.review.repsitory.ReviewJpaRepository
 import io.kotest.core.spec.style.BehaviorSpec
 import io.kotest.extensions.spring.SpringExtension
 import io.kotest.matchers.collections.shouldContainExactly
-import io.kotest.matchers.shouldBe
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest
 import org.springframework.context.annotation.Import
@@ -24,14 +23,13 @@ import org.springframework.test.context.ActiveProfiles
 @Import(ReviewPersistenceAdapter::class)
 @DataJpaTest
 class ReviewPersistenceAdapterTest @Autowired constructor(
-    private val persistenceAdapter: ReviewPersistenceAdapter,
+    private val reviewPersistenceAdapter: ReviewPersistenceAdapter,
     private val reviewJpaRepository: ReviewJpaRepository,
     private val orderJpaRepository: OrderJpaRepository,
     private val restaurantJpaRepository: RestaurantJpaRepository,
     private val customerJpaRepository: CustomerJpaRepository,
 ) : BehaviorSpec() {
     override fun extensions() = listOf(SpringExtension)
-
 
     init {
         val customer = Customer(name = "홍길동", address = "서울시 동작구", phoneNumber = "010-1234-1234").let {
@@ -53,7 +51,7 @@ class ReviewPersistenceAdapterTest @Autowired constructor(
                         content = "맛있어요",
                         rating = 5
                     ).let {
-                        persistenceAdapter.save(it)
+                        reviewPersistenceAdapter.save(it)
                     }
                     Then("리뷰가 등록된다.") {
                         val reviews = reviewJpaRepository.findAll().map { it.toEntity() }
@@ -69,22 +67,5 @@ class ReviewPersistenceAdapterTest @Autowired constructor(
                 }
             }
         }
-        Given("리뷰가 존재하는 경우") {
-            When("리뷰를 조회하면") {
-                Then("리뷰가 조회된다.") {
-                    true shouldBe true
-                }
-            }
-        }
-
-        Given("리뷰가 존재하지 않는 경우") {
-            When("리뷰를 조회하면") {
-                Then("리뷰가 조회되지 않는다.") {
-                    true shouldBe true
-                }
-            }
-        }
-
-        // 주문의 상태가 배달 완료여야 리뷰를 작성할 수 있다 (integration test)
     }
 }
