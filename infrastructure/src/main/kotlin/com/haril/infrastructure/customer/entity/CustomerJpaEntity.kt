@@ -2,9 +2,11 @@ package com.haril.infrastructure.customer.entity
 
 import com.haril.domain.customer.entity.Customer
 import jakarta.persistence.*
+import org.hibernate.envers.Audited
 
 @Entity
 @Table(name = "customer")
+@Audited
 class CustomerJpaEntity(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
