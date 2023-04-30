@@ -12,8 +12,17 @@ services:
       MYSQL_PASSWORD: test
     platform: linux/arm64/v8
     networks:
-      - mysql
+      - delivery
+
+  web:
+    image: songkg7/web
+    container_name: web
+    platform: linux/amd64
+    ports:
+      - 8080:8080
+    networks:
+      - delivery
 
 networks:
-  mysql:
+  delivery:
     driver: bridge

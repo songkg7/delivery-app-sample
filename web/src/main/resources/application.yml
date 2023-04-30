@@ -3,13 +3,8 @@ spring:
     include:
       - infra
     active: local
-#---
-#spring:
-#  config:
-#    activate:
-#      on-profile: local
-#---
-#spring:
-#  config:
-#    activate:
-#      on-profile: dev
+---
+spring:
+  config:
+    activate:
+      on-profile: dev
