@@ -23,7 +23,7 @@ class CreateReviewServiceTest : FreeSpec({
     val createReviewService =
         CreateReviewService(reviewRepository, orderRepository, restaurantRepository, customerRepository)
 
-    val customer = Customer(id = 1L, name = "John", address = "서울", phoneNumber = "010-1234-5678")
+    val customer = Customer(id = 1L, name = "John", addresses = listOf(), phoneNumber = "010-1234-5678")
     every { customerRepository.findById(any()) } returns customer
     every { restaurantRepository.findById(any()) } returns Restaurant(1L, "마법사주방")
     "Customer 가 레스토랑에 주문을 한 적이 있다면" - {

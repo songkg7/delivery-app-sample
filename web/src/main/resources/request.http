@@ -4,9 +4,22 @@ Content-Type: application/json
 
 {
   "name": "John Doe",
-  "address": "123 Main Street",
-  "phoneNumber": "123-456-7890"
+  "phoneNumber": "123-456-7890",
+  "addresses": [
+    {
+      "city": "New York",
+      "street": "NY",
+      "zipcode": "10001"
+    },
+    {
+      "city": "Texas",
+      "street": "TX",
+      "zipcode": "12345"
+    }
+  ]
 }
+
+### Remove Address
 
 ### Create Restaurant
 POST http://localhost:8080/restaurant

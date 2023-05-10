@@ -32,7 +32,7 @@ class ReviewPersistenceAdapterTest @Autowired constructor(
     override fun extensions() = listOf(SpringExtension)
 
     init {
-        val customer = Customer(name = "홍길동", address = "서울시 동작구", phoneNumber = "010-1234-1234").let {
+        val customer = Customer(name = "홍길동", phoneNumber = "010-1234-1234").let {
             customerJpaRepository.save(CustomerJpaEntity.from(it)).toEntity()
         }
         Given("레스토랑이 존재하는 경우") {
