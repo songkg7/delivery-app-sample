@@ -10,7 +10,6 @@ services:
       MYSQL_DATABASE: test
       MYSQL_USER: test
       MYSQL_PASSWORD: test
-    platform: linux/arm64/v8
     networks:
       - delivery
 

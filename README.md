@@ -29,12 +29,12 @@ docker compose up -d
 title: delivery table
 ---
 erDiagram
+    CUSTOMER ||--|| CUSTOMER_ADDRESS: contains
     CUSTOMER ||--o{ ORDER: do
     CUSTOMER {
         Long id PK
         String name
-        String address
-        String phoneNumber
+        Address[] addresses
     }
     ORDER ||--|{ ORDER_MENU: contains
     ORDER {
@@ -43,18 +43,31 @@ erDiagram
         Enum deliveryStatus
     }
     RESTAURANT ||--o{ REVIEW: contains
+    CUSTOMER_ADDRESS {
+        String city
+        String street
+        String zipcode
+    }
+
     REVIEW {
         Long id PK
-        Long order_id
-        Long customer_id
         Long restaurant_id FK
+        Long order_id FK
+        Long customer_id FK
         String contents
         Int rating
     }
+    RESTAURANT ||--|| RESTAURANT_ADDRESS: contains
     RESTAURANT ||--|{ MENU: contains
     RESTAURANT {
         Long id PK
         String name
+        Address address
+    }
+    RESTAURANT_ADDRESS {
+        String city
+        String street
+        String zipcode
     }
     MENU {
         Long id PK
@@ -86,13 +99,13 @@ erDiagram
     - [x] 한 번의 주문에 여러 메뉴를 담을 수 있다.
     - [x] 주문을 생성한 사용자는 **주문당 하나의 리뷰를 작성**할 수 있다.
     - [x] 사용자는 **한 번에 하나의 식당에만 주문**할 수 있다.
-      - 주문 상태가 배달 완료 또는 취소여야 다시 주문을 생성할 수 있다.
+        - 주문 상태가 배달 완료 또는 취소여야 다시 주문을 생성할 수 있다.
 - (Optional) 배달이 완료되기 전에는 다른 주문을 할 수 없다.
 
 ### Restaurant & Menu
 
 - [x] 레스토랑을 등록할 수 있다.
-  - [x] 메뉴와 함께 등록할 수 있다.
+    - [x] 메뉴와 함께 등록할 수 있다.
 
 - pagination (optional)
 
